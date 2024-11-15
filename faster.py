@@ -1,4 +1,8 @@
 from faster_whisper import WhisperModel
+import time
+
+# Start timer
+start_time = time.time()
 
 # Set the model size to "small" for lighter resource usage
 model_size = "small"
@@ -12,6 +16,13 @@ segments, info = model.transcribe("audio.wav", beam_size=3)
 
 # Output the detected language and probability
 print("Detected language '%s' with probability %f" % (info.language, info.language_probability))
+
+# End timer
+end_time = time.time()
+
+# Calculate elapsed time
+elapsed_time = end_time - start_time
+print(f"Elapsed time: {elapsed_time:.2f} seconds")
 
 # Print each transcription segment
 for segment in segments:
